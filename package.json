@@ -4,7 +4,8 @@
   "description": "Auth microservice",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_ENV=test jest --runInBand --forceExit",
+    "start": "node ./src/server.js"
   },
   "keywords": [
     "NodeJS",
@@ -18,6 +19,28 @@
   "author": "Jenya Tkachenko",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.3"
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "express-validation": "^1.0.2",
+    "helmet": "^3.12.0",
+    "http-status": "^1.0.1",
+    "joi": "^13.1.2"
+  },
+  "devDependencies": {
+    "jest": "^22.4.2",
+    "superagent": "^3.8.2",
+    "supertest": "^3.0.0"
+  },
+  "jest": {
+    "verbose": true,
+    "testPathIgnorePatterns": [
+      "/__tests__/mocks/"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/src/**/*.js",
+      "!**/src/server.js",
+      "!**/src/app.js"
+    ]
   }
 }
