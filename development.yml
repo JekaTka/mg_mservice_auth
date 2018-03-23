@@ -1,0 +1,7 @@
+version: "3"
+services:
+  mg_mservice_auth:
+    environment:
+      NODE_ENV: "development"
+      WATCH_MODE: "true"
+      PORT: 3000
