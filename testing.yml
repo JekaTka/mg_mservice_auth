@@ -1,10 +1,10 @@
 version: "3"
 services:
   mg_mservice_auth:
+    image: mg_mservice_auth:latest
     environment:
-      NODE_ENV: "development"
-      WATCH_MODE: "true"
-      MONGO_URI: "mongodb://mongodb:27017/mg_mservice_auth"
+      NODE_ENV: "test"
+      MONGO_URI_TESTS: "mongodb://mongodb/mg_mservice_auth"
       JWT_SECRET: "supersecret"
       JWT_EXPIRATION_MINUTES: 10080
       PORT: 3000

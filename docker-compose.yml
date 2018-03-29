@@ -12,12 +12,24 @@ services:
       - redis
     volumes:
       - ${PWD}:/home/node/app
+    networks:
+      - mg_net
     environment:
       NODE_ENV: "production"
       PORT: 3000
+
   redis:
-    image: "redis:alpine"
+    image: redis:alpine
+    networks:
+      - mg_net
+
   mongodb:
     image: mongo:latest
+    networks:
+      - mg_net
     ports:
       - "27017:27017"
+
+networks:
+  mg_net:
+    driver: bridge

@@ -4,10 +4,11 @@
   "description": "Auth microservice",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test jest --runInBand --forceExit",
+    "test": "jest --runInBand --forceExit",
     "start": "node ./src/server.js",
-    "docker:development": "docker-compose -f docker-compose.yml -f development.yml build && docker-compose -f docker-compose.yml -f development.yml up -d",
-    "docker:build": "docker-compose build",
+    "docker:development": "docker-compose -f docker-compose.yml -f development.yml build && docker-compose -f docker-compose.yml -f development.yml up",
+    "docker:test": "docker-compose -p mgmserviceauthtest -f docker-compose.yml -f testing.yml run mg_mservice_auth test",
+    "docker:build": "docker build -t mg_mservice_auth .",
     "docker:start": "docker-compose up -d",
     "docker:stop": "docker-compose down"
   },
@@ -28,7 +29,12 @@
     "express-validation": "^1.0.2",
     "helmet": "^3.12.0",
     "http-status": "^1.0.1",
-    "joi": "^13.1.2"
+    "joi": "^13.1.2",
+    "jsonwebtoken": "^8.2.0",
+    "mongoose": "^5.0.11",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "jest": "^22.4.2",

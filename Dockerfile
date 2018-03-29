@@ -9,6 +9,7 @@ COPY package.json package-lock.json /home/node/app/
 WORKDIR /home/node/app/
 RUN npm install
 COPY . /home/node/app/
+RUN chown -R node:node /home/node/app/
 
 USER node
 ENTRYPOINT [ "docker-entrypoint.sh" ]
